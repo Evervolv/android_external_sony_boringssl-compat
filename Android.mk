@@ -22,6 +22,8 @@ EVP_FILES := \
     p_open.c \
     p_seal.c
 
+LOCAL_CFLAGS += -Wno-error
+
 RSA_FILES := rsa_pss.c
 
 B64_FILES := bio_b64.c
