@@ -28,7 +28,11 @@ RSA_FILES := rsa_pss.c
 
 B64_FILES := bio_b64.c
 
-LOCAL_SRC_FILES := $(EVP_FILES) $(RSA_FILES)
+LOCAL_SRC_FILES := $(EVP_FILES)
+
+ifeq ($(shell test $(PLATFORM_SDK_VERSION) -lt 29; echo $$?),0)
+LOCAL_SRC_FILES += $(RSA_FILES)
+endif
 
 ifeq ($(TARGET_REQUIRES_B64_COMPAT),true)
 LOCAL_SRC_FILES += $(B64_FILES)
